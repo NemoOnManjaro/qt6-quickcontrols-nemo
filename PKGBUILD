@@ -13,7 +13,7 @@ _branch=master
 _gitname=qt$_basename
 pkgname=qt5-$_basename-git
 
-pkgver=5.6.4.r0.gf458169
+pkgver=5.7.1.r2.g70121cc
 
 pkgrel=1
 pkgdesc="Nemomobile Qt Quick Controls"
@@ -21,7 +21,7 @@ arch=('x86_64' 'aarch64')
 url="https://$_host/$_project/$_gitname#branch=$_branch"
 license=('LGPL-2.1-only AND Apache-2.0')
 depends=('qt5-quickcontrols' 'nemo-theme-default' 'qt5-svg' 'google-opensans-fonts' 'maliit-nemo-keyboard' 'mlite')
-makedepends=('git')
+makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname}::git+${url}")
@@ -36,21 +36,20 @@ pkgver() {
 }
 
 prepare() {
-  # TODO: upstream building examples optional
-  # https://t.me/NemoMobile/17555
-  cd "${srcdir}/${pkgname}"
-  sed -i 's/examples//' qtquickcontrols-nemo.pro
+    # TODO: upstream building examples optional
+    # https://t.me/NemoMobile/17555
+    cd "${srcdir}/${pkgname}"
+    sed -i.bak 's/add_subdirectory[(]examples[)]//' CMakeLists.txt
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  mkdir -p build
-  cd build
-  qmake ..
-  make
+    cmake \
+        -B "${pkgname}/build" \
+        -S "${pkgname}" \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr'
+    make -C "${pkgname}/build" all
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/build"
-  make -j 1 INSTALL_ROOT="${pkgdir}" install
+    make -C "${srcdir}/${pkgname}/build" DESTDIR="$pkgdir" install
 }
