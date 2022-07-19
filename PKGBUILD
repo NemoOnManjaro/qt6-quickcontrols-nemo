@@ -21,18 +21,18 @@ sha256sums=('2fbdea56bb3fd76590df180e5aae47e449d04814c3d4e11bea3d089b5238d932')
 prepare() {
     # TODO: upstream building examples optional
     # https://t.me/NemoMobile/17555
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/quickcontrols-nemo-${pkgver}"
     sed -i.bak 's/add_subdirectory[(]examples[)]//' CMakeLists.txt
 }
 
 build() {
+    cd "${srcdir}/quickcontrols-nemo-${pkgver}"
     cmake \
-        -B "${pkgname}/build" \
-        -S "${pkgname}" \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr'
-    make -C "${pkgname}/build" all
+    make all
 }
 
 package() {
-    make -C "${srcdir}/${pkgname}/build" DESTDIR="$pkgdir" install
+    cd "${srcdir}/quickcontrols-nemo-${pkgver}"
+    make DESTDIR="$pkgdir" install
 }
