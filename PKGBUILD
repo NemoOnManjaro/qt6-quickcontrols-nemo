@@ -6,7 +6,7 @@
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=qt5-quickcontrols-nemo
-pkgver=5.7.4
+pkgver=5.7.5
 
 pkgrel=1
 pkgdesc="Nemomobile Qt Quick Controls"
@@ -16,7 +16,7 @@ license=('LGPL-2.1-only AND Apache-2.0')
 depends=('qt5-quickcontrols' 'nemo-theme-default' 'qt5-svg' 'google-opensans-fonts' 'maliit-nemo-keyboard' 'mlite')
 makedepends=('cmake')
 source=("${url}/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ff0609ae1de3a97fe5970cedc0974537e952d9bb787a8ddc3adf0f618b333397')
+sha256sums=('a4da7dfc0238aa2ef50f7a6454ec116785671dec48b956c7cb60e3c91012faae')
 
 prepare() {
     # TODO: upstream building examples optional
