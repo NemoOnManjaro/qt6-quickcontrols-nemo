@@ -6,28 +6,22 @@
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
 pkgname=qt5-quickcontrols-nemo
-pkgver=5.7.5
+pkgver=5.7.6
 
 pkgrel=1
 pkgdesc="Nemomobile Qt Quick Controls"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nemomobile-ux/qtquickcontrols-nemo"
 license=('LGPL-2.1-only AND Apache-2.0')
-depends=('qt5-quickcontrols' 'nemo-theme-default' 'qt5-svg' 'google-opensans-fonts' 'maliit-nemo-keyboard' 'mlite')
+depends=('qt5-quickcontrols' 'nemo-theme-default' 'qt5-svg' 'google-opensans-fonts')
 makedepends=('cmake')
 source=("${url}/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('a4da7dfc0238aa2ef50f7a6454ec116785671dec48b956c7cb60e3c91012faae')
-
-prepare() {
-    # TODO: upstream building examples optional
-    # https://t.me/NemoMobile/17555
-    cd qtquickcontrols-nemo-$pkgver
-    sed -i.bak 's/add_subdirectory[(]examples[)]//' CMakeLists.txt
-}
+sha256sums=('404583ebaf84fcb19e70c3c51ba0c487e6fbb81e35f3f41943d64d64178e9757')
 
 build() {
     cd "qtquickcontrols-nemo-${pkgver}"
     cmake \
+        -DBUILD_EXAMPLES=OFF -DBUILD_CONTROLS=ON \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr'
     make all
 }
