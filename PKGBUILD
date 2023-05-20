@@ -13,7 +13,13 @@ pkgdesc="Nemomobile Qt Quick Controls"
 arch=('x86_64' 'aarch64')
 url="https://github.com/nemomobile-ux/qtquickcontrols-nemo"
 license=('LGPL-2.1-only AND Apache-2.0')
-depends=('qt5-quickcontrols' 'nemo-theme-default' 'qt5-svg' 'google-opensans-fonts')
+depends=(
+    'qt5-quickcontrols'
+    'nemo-theme-default'
+    'qt5-svg'
+    'google-opensans-fonts'
+    'mlite'
+)
 makedepends=('cmake')
 source=("${url}/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('404583ebaf84fcb19e70c3c51ba0c487e6fbb81e35f3f41943d64d64178e9757')
