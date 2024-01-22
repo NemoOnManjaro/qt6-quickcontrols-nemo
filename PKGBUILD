@@ -5,8 +5,8 @@
 # Contributor: Chupligin Sergey <neochapay@gmail.com>
 # Maintainer: James Kittsmiller (AJSlye) <james@nulogicsystems.com>
 
-pkgname=qt5-quickcontrols-nemo
-pkgver=5.7.6
+pkgname=qt6-quickcontrols-nemo
+pkgver=6.1.3
 
 pkgrel=1
 pkgdesc="Nemomobile Qt Quick Controls"
@@ -14,15 +14,16 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/nemomobile-ux/qtquickcontrols-nemo"
 license=('LGPL-2.1-only AND Apache-2.0')
 depends=(
-    'qt5-quickcontrols'
+    'qt6-shadertools'
+    'qt6-declarative'
     'nemo-theme-default'
-    'qt5-svg'
+    'qt6-svg'
     'google-opensans-fonts'
     'mlite'
 )
 makedepends=('cmake')
 source=("${url}/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('404583ebaf84fcb19e70c3c51ba0c487e6fbb81e35f3f41943d64d64178e9757')
+sha256sums=('bbfb07e17f782f15d7ee723b2084a27d7f6298decba09e6d8ced12c935c42ad6')
 
 build() {
     cd "qtquickcontrols-nemo-${pkgver}"
