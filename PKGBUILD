@@ -19,7 +19,7 @@ depends=(
     'nemo-theme-default'
     'qt6-svg'
     'google-opensans-fonts'
-    'mlite'
+    'mlite6'
 )
 makedepends=('cmake')
 source=("${url}/archive/refs/tags/$pkgver.tar.gz")
