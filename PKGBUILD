@@ -22,7 +22,7 @@ depends=(
 )
 makedepends=('cmake')
 source=("${url}/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('253c1f5008d99208e56332bde33fcd446092bb284ea5cef00777d066172bd312')
+sha256sums=('8c921edc0ea4bf146f8b3c8ea023c4cd86d7fc4573efce8f1c082671e7a919bc')
 
 build() {
     cd "qtquickcontrols-nemo-${pkgver}"
